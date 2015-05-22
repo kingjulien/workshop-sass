@@ -1,0 +1,16 @@
+.columns {
+  background-color: #ccc;
+  width: 100%;
+  
+  div {
+    background-color: #666;
+    display: inline-block;
+    height: 150px;
+    margin-right: 4.3%;
+    width: 30%;
+  }
+  
+  .col3 {
+    margin-right: 0;
+  }
+}

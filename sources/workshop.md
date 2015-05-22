@@ -9,10 +9,15 @@ cd to your folder....
 gem install sass
 check: sass -v
 
+create folders:
+sass
+public/css
+
 cmd: sass --watch sass:public/css
 
-open file sass/columns.scss & save it
-check if you have file columns.css created under public/css
+
+create file main.scss
+check if you have file created under public/css
 check your index.html in browser
 
 Installed!
@@ -22,15 +27,12 @@ check how nesting is done in scss and what is the result in css
 
 Tasks
 Basics:
+0. importing
+    import nav.css and columns.css into 1 file - main.css - so you can have just 1 link to css in html
+
 1. nesting
 Prepisat sources/nav.css do sass/nav.scss
 Ak je to spravne, mal by byt css/nav.css rovnaky ako sources/nav.css
-
-1.1 importing
-    @import "columns";
-    @import "nav";
-
-    import nav.css and columns.css into 1 file - main.css - so you can have just 1 link to css in html - main.css
 
 2. rule of 3 nesting - remove 4th nesting - nav ul li -> nav li
 

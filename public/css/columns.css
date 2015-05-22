@@ -1,0 +1,18 @@
+.columns {
+  background-color: #ccc;
+  width: 100%; }
+  .columns div {
+    background-color: #666;
+    display: inline-block;
+    height: 150px;
+    margin-right: 4.3%;
+    width: 30%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px; }
+  .columns .col3 {
+    margin-right: 0; }
+
+/*# sourceMappingURL=columns.css.map */
