@@ -1,99 +1,108 @@
-Installation:
+#Installation:
 
 http://rubyinstaller.org/downloads/
 
-prompt: set PATH=%PATH%;C:\Ruby22\bin
+set PATH=%PATH%;C:\Ruby22\bin
+
+https://github.com/kingjulien/workshop-sass
 
 cd to your folder....
 
 gem install sass
-check: sass -v
 
-cmd: sass --watch sass:public/css
+sass -v
+
+sass --watch sass:public/css
 
 open file sass/columns.scss & save it
+
 check if you have file columns.css created under public/css
+
 check your index.html in browser
 
-Installed!
+**Installed!**
 
-check how nesting is done in scss and what is the result in css
+##Tasks:
 
+###1. Nesting
+- check how nesting is done in scss and what is the result in css
+- rewrite sources/nav.css to sass/nav.scss
+  (if it's correct, compiled nav.css should be same as in resources)
+- rule of 3 nesting - remove 4th nesting by changing nav ul li to ul > li
 
-Tasks
-Basics:
-1. nesting
-Prepisat sources/nav.css do sass/nav.scss
-Ak je to spravne, mal by byt css/nav.css rovnaky ako sources/nav.css
-
-1.1 importing
-    @import "columns";
+###2. Importing
+    @import "columns"; // notice it's just name of file (without .scss)
     @import "nav";
 
-    import nav.css and columns.css into 1 file - main.css - so you can have just 1 link to css in html - main.css
+- import nav.css and columns.css into 1 file - main.css - so you can have just 1 link to css in html - main.css
 
-2. rule of 3 nesting - remove 4th nesting - nav ul li -> nav li
-
-3. reference parent
-
-4. apply rules to first level li only
-    - > ul > li /* first level */,
-5. apply last-child - change background color of last li a
-    &:last-child{
-      a {
-        background-color: #222;
-      }
+###3. Reference parent
+    a {
+        &:hover {
+        }
     }
 
-6. variables
-    create & use variables for colors & sizes
+- change background color to #222; of last li a
 
-    $text-color: #333;
+###4. Variables
+**$text-color**: #333;
+- create & use variables for all colors & sizes
+   
+###5. Operations
+In SASS you can **calculate colors**
+- try to calculate 1 new colour by using 2 already defined colors: 
+- color-1 + color-2
+- color-1 - color-2
 
-7. operations
-    spocitat/odcitat 2 farby: color-1 + color-2
+- define variables for grid: **grid-width** & **grid-columns**
+- calculate width in % for element which width should be 3 of 12 columns and use it for some selector, f.e. .col3 - width should be in % (25%)
 
-8. zadefinujte si variables grid-width a pocet stlpcov v gride a priradte nejakemu selectoru, napr. col-3 width v %, ak element ma byt na 3 stlpce gridu
     width: (($grid-width / $grid-columns) * 3 / $grid-width) * 100%;
 
+###6. Mixins
+    A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes, f.e. border-radiu.
+    
+    syntax:
+      @mixin rounded-corners($radius) {
 
-9. mixins
-    sluzia na opakovane casti kodov, cize macro, napr. rozne prefixy pre rozne browsere ale kludne aj casti css
-    vytvorte a pouzite mixin na toto:
+      }
+
+      @include rounded-corners(10px);
+    
+- create and use mixin for border-radius with those lines:
 
       -webkit-border-radius: ...;
       -moz-border-radius: ...;
       -ms-border-radius: ...;
       -o-border-radius: ...;
       border-radius: ...;
+- create and use mixin on h1 with those css rules:
 
-      a druhy na tuto cast kodu:
-      background-color: $color;
-      border-color: darken($color, 30%);
-      color: darken($color, 40%);
-      .close {
-        color: darken($color, 30%);
-      }
+        background-color: $color;
+        border-color: darken($color, 30%);
+        color: darken($color, 40%); // notice - you can use functions inside mixins
+        .syntax { // notice - you can use nesting inside mixins
+          color: darken($color, 30%);
+        }
 
-      syntax:
-      @mixin rounded-corners($radius) {
+###7. Extending / Inheritance
+- extend .errorMesssage from .error
+    
+    @extend .error;
 
-      }
-
-      @include rounded-corners(10px);
-
-10. extending / inheritance
-    extend .errorMesssage from .error
-
-11. functions
+###8. functions
     prebuilt, f.e. color - darken($color, $amount)
 
-    create custom function for calculating width of column in % based on number of columns
+- create and use custom function for calculating width of column in % based on number of columns
+    
+###9. Media queries nesting
+- define breakpoints as variables and nest some media queries
 
-12. media queries nesting
-    define breakpoints as variables and nest some media queries
+    @media screen and (max-width: $break-small) {
+    
+    }
 
-13. final - media queries mixins using @content
+###10. Final - media queries mixins using @content
     just use mixin 'breakpoint'
 
     @mixin breakpoint($name){
