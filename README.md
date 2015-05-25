@@ -55,9 +55,12 @@ In SASS you can **calculate colors**
 - color-1 - color-2
 
 - define variables for grid: **grid-width** & **grid-columns**
-- calculate width in % for element which width should be 3 of 12 columns and use it for some selector, f.e. .col3 - width should be in % (25%)
+- calculate width in px for element which width should be 3 of 12 columns and use it for some selector, f.e. .col3
+    width: $grid-width / $grid-columns * 3;
 
-    width: (($grid-width / $grid-columns) * 3 / $grid-width) * 100%;
+- calculate it in % (25%)
+
+  width: 3 / $grid-columns * 100%;
 
 ###6. Mixins
     A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. A good use of a mixin is for vendor prefixes, f.e. border-radiu.
